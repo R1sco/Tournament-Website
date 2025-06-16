@@ -36,10 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+
+    
     // Form submission dengan animasi
     const registrationForm = document.getElementById('registrationForm');
     if (registrationForm) {
-        registrationForm.addEventListener('submit', function(e) {
+        registrationForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form values
@@ -54,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate form submission dengan animasi
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
@@ -70,9 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 duration: 300
             });
             
-            // Simulate API call with timeout
-            setTimeout(() => {
-                // Animasi sukses
+            try {
+            
+               
+                // Animasi sukses (anggap berhasil)
                 anime({
                     targets: registrationForm.elements,
                     opacity: [0.7, 1],
@@ -81,11 +83,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     duration: 300
                 });
                 
+                // Tampilkan pesan sukses dan reset form
                 showAlert('Pendaftaran berhasil! Tim ' + teamName + ' telah terdaftar.', 'success');
                 registrationForm.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('Gagal mengirim data. Silakan coba lagi nanti.', 'danger');
+            } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
-            }, 1500);
+            }
         });
     }
 
