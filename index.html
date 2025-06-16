@@ -214,32 +214,33 @@
                                 <h2 class="section-title anime-section-title">Formulir Pendaftaran</h2>
                                 <p class="text-muted">Isi data tim Anda dengan lengkap dan benar</p>
                             </div>
-                            <form id="registrationForm">
+                            <form id="registrationForm" name="register" method="POST" data-netlify="true">
+                                <input type="hidden" name="form-name" value="register">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="teamName" class="form-label">Nama Tim</label>
-                                        <input type="text" class="form-control" id="teamName" required>
+                                        <input type="text" class="form-control" id="teamName" name="teamName" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="captainName" class="form-label">Nama Kapten</label>
-                                        <input type="text" class="form-control" id="captainName" required>
+                                        <input type="text" class="form-control" id="captainName" name="captainName" required>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Nomor Telepon</label>
-                                    <input type="tel" class="form-control" id="phone" required>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Alamat</label>
-                                    <textarea class="form-control" id="address" rows="2" required></textarea>
+                                    <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
                                 </div>
                                 <div class="mb-4">
                                     <label for="players" class="form-label">Daftar Pemain (pisahkan dengan koma)</label>
-                                    <textarea class="form-control" id="players" rows="4" placeholder="Contoh: Andi, Budi, Candra, Dodi, Eko" required></textarea>
+                                    <textarea class="form-control" id="players" name="players" rows="4" required></textarea>
                                 </div>
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary btn-lg">Daftar Sekarang</button>

@@ -38,63 +38,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     
-    // Form submission dengan animasi
-    const registrationForm = document.getElementById('registrationForm');
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const teamName = document.getElementById('teamName').value;
-            const captainName = document.getElementById('captainName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            
-            // Simple validation
-            if (!teamName || !captainName || !email || !phone) {
-                showAlert('Mohon isi semua field yang diperlukan', 'danger');
-                return;
-            }
-            
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Memproses...';
-            
-            // Animasi form saat submit
-            anime({
-                targets: registrationForm.elements,
-                opacity: [1, 0.7],
-                translateY: [0, 5],
-                easing: 'easeOutExpo',
-                duration: 300
-            });
-            
-            try {
-            
-               
-                // Animasi sukses (anggap berhasil)
-                anime({
-                    targets: registrationForm.elements,
-                    opacity: [0.7, 1],
-                    translateY: [5, 0],
-                    easing: 'easeOutExpo',
-                    duration: 300
-                });
+// Form submission dengan animasi
+const registrationForm = document.getElementById('registrationForm');
+if (registrationForm) {
+    registrationForm.addEventListener('submit', function(e) {
                 
-                // Tampilkan pesan sukses dan reset form
-                showAlert('Pendaftaran berhasil! Tim ' + teamName + ' telah terdaftar.', 'success');
-                registrationForm.reset();
-            } catch (error) {
-                console.error('Error:', error);
-                showAlert('Gagal mengirim data. Silakan coba lagi nanti.', 'danger');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-            }
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Memproses...';
+        
+        // Animasi form saat submit
+        anime({
+            targets: registrationForm.elements,
+            opacity: [1, 0.7],
+            translateY: [0, 5],
+            easing: 'easeOutExpo',
+            duration: 300
         });
-    }
+    });
+}
 
     // Alert function
     function showAlert(message, type) {
